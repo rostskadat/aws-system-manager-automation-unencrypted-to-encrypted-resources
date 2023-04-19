@@ -184,7 +184,7 @@ Resources:
                 VolumeId: "{{volumeId}}"
           - name: attachNewEBSVolume
             action: aws:executeAutomation
-            timeoutSeconds: 180
+            timeoutSeconds: 300
             onFailure: step:detachNewVolume
             nextStep: applyDeleteOnTerminationValue
             maxAttempts: 1
@@ -243,7 +243,7 @@ Resources:
                 VolumeId: "{{createEncryptedVolumeFromEncryptedSnapshot.NewRootVolumeID}}"
           - name: attachOriginalVolume
             action: aws:executeAutomation
-            timeoutSeconds: 180
+            timeoutSeconds: 300
             onFailure: Continue
             nextStep: deleteNewEncryptedVolume
             maxAttempts: 1
